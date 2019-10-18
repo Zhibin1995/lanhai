@@ -86,19 +86,24 @@ class ProjectController extends BaseController
         $id = Yii::$app->request->get('id', null);
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
-            $model->facility_ids = implode(',',$model->facility_ids);
+            $model->facility_ids = $model->facility_ids?implode(',',$model->facility_ids):'';
             $model->save();
-            foreach ($model->img as $key=>$item){
-                $img = new ProjectImg();
-                $img->project_id = $model->id;
-                $img->img_url = $item;
-                $img->sort = $key;
-                $img->created_at = time();
-                $img->save();
+            ProjectImg::deleteAll(['project_id' => $model->id]);
+            if($model->img){
+                foreach ($model->img as $key=>$item){
+                    $img = new ProjectImg();
+                    $img->project_id = $model->id;
+                    $img->img_url = $item;
+                    $img->sort = $key;
+                    $img->created_at = time();
+                    $img->save();
+                }
             }
             return $this->redirect(['index']);
 
         }
+        $model->facility_ids = explode(',',$model->facility_ids);
+        $model->img = ProjectImg::find()->where(['project_id' => $model->id])->select('img_url')->column();
         return $this->render($this->action->id, [
             'model' => $model,
         ]);

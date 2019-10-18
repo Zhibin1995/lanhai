@@ -31,11 +31,24 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             'id',
-            'icon',
+            [
+                'attribute' => 'icon',
+                'format' => [
+                    'image',
+                    [
+                        'width'=>'84',
+                        'height'=>'84',
+                        'class' => 'img-circle'
+                    ]
+                ],
+                'value' => function ($model) {
+                    return $model->icon;
+                }
+            ],
             'name',
             'sort',
             //'status',
-            'created_at',
+            'created_at:datetime',
             //'create_user',
             //'updated_at',
             //'updated_user',

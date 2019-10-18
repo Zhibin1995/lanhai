@@ -49,7 +49,7 @@ class Project extends BaseModel
     public function rules()
     {
         return [
-            [['name', 'area_id', 'category_id', 'city_id', 'project_area', 'price_range', 'contact', 'address'], 'required'],
+            [['img','name', 'area_id', 'category_id', 'city_id', 'project_area', 'price_range', 'contact', 'address'], 'required'],
             [['area_id', 'category_id', 'city_id', 'sort', 'status', 'created_at', 'create_user', 'updated_at', 'updated_user'], 'integer'],
             [['work', 'park', 'append', 'service'], 'string'],
             [['name', 'project_area', 'price_range', 'address'], 'string', 'max' => 255],

@@ -55,7 +55,6 @@ class LanhaiController extends OnAuthController
                 ->where(['id' => $id])
                 ->asArray()
                 ->one();
-//            var_dump($model);die;
             $model['img'] = ProjectImg::find()->where(['project_id' => $id])->select('img_url')->column();
             $model['room'] = Room::find()->where(['project_id' => $id,'status' => 1])->select('name,img_url')->asArray()->all();
             $model['people'] = People::find()->where(['project_id' => $id,'status' => 1])->select('name,photo,phone')->asArray()->all();
