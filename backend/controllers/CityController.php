@@ -33,7 +33,6 @@ class CityController extends BaseController
     */
     public function actionIndex()
     {
-        $a = AuthAssignment::find()->select('role_id')->where(['user_id' => Yii::$app->getUser()->id])->scalar();p($a);
         $searchModel = new SearchModel([
             'model' => $this->modelClass,
             'scenario' => 'default',

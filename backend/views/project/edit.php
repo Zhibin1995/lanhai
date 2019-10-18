@@ -1,6 +1,7 @@
 <?php
 
 use common\helpers\Html;
+use common\models\common\AuthAssignment;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -10,6 +11,8 @@ use yii\widgets\ActiveForm;
 $this->title = 'Project';
 $this->params['breadcrumbs'][] = ['label' => 'Projects', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$role = AuthAssignment::find()->select('role_id')->where(['user_id' => Yii::$app->getUser()->id])->scalar();
+
 ?>
 
 <div class="row">
@@ -53,7 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'append')->widget(\common\widgets\ueditor\UEditor::class, []) ?>
                     <?= $form->field($model, 'service')->widget(\common\widgets\ueditor\UEditor::class, []) ?>
                     <?= $form->field($model, 'vr_url')->textInput(['maxlength' => true]) ?>
+                    <?php if($role ===1):?>
                     <?= $form->field($model, 'sort')->textInput() ?>
+                    <?php endif;?>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 text-center">
