@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\common\AuthAssignment;
 use Yii;
 use common\models\app\City;
 use common\components\Curd;
@@ -32,6 +33,7 @@ class CityController extends BaseController
     */
     public function actionIndex()
     {
+        $a = AuthAssignment::find()->where(['user_id' => Yii::$app->getUser()->id])->one();p($a);
         $searchModel = new SearchModel([
             'model' => $this->modelClass,
             'scenario' => 'default',
