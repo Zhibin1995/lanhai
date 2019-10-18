@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\app\area;
+use common\models\app\Area;
 use common\components\Curd;
 use common\models\base\SearchModel;
 use backend\controllers\BaseController;
@@ -21,7 +21,7 @@ class AreaController extends BaseController
     /**
     * @var area
     */
-    public $modelClass = area::class;
+    public $modelClass = Area::class;
 
 
     /**
