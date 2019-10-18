@@ -82,6 +82,7 @@ return [
                         'v1/member/auth',
                         // 版本2
                         'v2/default', // 默认测试入口
+                        'v1/lanhai'
                     ],
                     'pluralize' => false, // 是否启用复数形式，注意index的复数indices，开启后不直观
                     'extraPatterns' => [
@@ -93,6 +94,8 @@ return [
                         'POST up-pwd' => 'up-pwd', // 重置密码
                         // 测试查询可删除 例如：http://www.rageframe.com/api/v1/default/search
                         'GET search' => 'search',
+                        'POST list' => 'list',
+                        'POST detail' => 'detail',
                         'GET session-key' => 'session-key', // 小程序获取session key
                         'POST decode' => 'decode', // 解密获取小程序用户信息数据
                         'GET qr-code' => 'qr-code', // 获取小程序码
