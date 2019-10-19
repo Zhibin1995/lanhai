@@ -74,13 +74,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{room} {service_facility} {people} {edit} {status} {delete}',
                 'buttons' => [
                     'room' => function($url, $model, $key){
-                        return Html::a('可租房源','/backend/room?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
+                        return "<a class=\"btn btn-primary btn-sm\" href=\"/backend/room?project_id={$model->id}\">可租房源</a>";
                     },
                     'service_facility' => function($url, $model, $key){
-                        return Html::a('服务设施','/backend/service-facility?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
+                        return "<a class=\"btn btn-primary btn-sm\" href=\"/backend/service-facility?project_id={$model->id}\">服务设施</a>";
                     },
                     'people' => function($url, $model, $key){
-                        return "<a class=\"btn btn-white btn-sm\" href=\"/backend/people/index?project_id=2\">招商人员</a>";
+                        return "<a class=\"btn btn-primary btn-sm\" href=\"/backend/people/index?project_id={$model->id}\">招商人员</a>";
                     },
                     'edit' => function($url, $model, $key){
                         return Html::edit(['edit', 'id' => $model->id]);
