@@ -36,6 +36,7 @@ return [
         '/main/index',// 系统主页
         '/main/system',// 系统首页
         '/wechat/qrcode/qr',// 二维码管理的二维码
+        '/people/index'
     ],
 
     /** ------ 配置文本类型 ------ **/
