@@ -8,6 +8,9 @@
  */
 
 namespace api\modules\v1\controllers;
+use common\models\app\Area;
+use common\models\app\Category;
+use common\models\app\City;
 use common\models\app\Facility;
 use common\models\app\People;
 use common\models\app\Room;
@@ -28,21 +31,35 @@ class LanhaiController extends OnAuthController
      *
      * @var array
      */
-    protected $optional = ['detail', 'list'];
+    protected $optional = ['detail', 'list', 'option'];
     public function actionList(){
         $post = Yii::$app->request->post();
         $page = $post['page'] ?? 1;
         $size = $post['size'] ?? 10;
         $offset = ($page -1) * 10;
-        $list = $this->modelClass::find()
-            ->where(['status' => 1])
-            ->select([
-                'id', 'name','address','contact'
-            ])
-            ->offset($offset)
-            ->limit($size)
-            ->asArray()
-            ->all();
+        $category = $post['category'] ??'';
+        $city = $post['city']??'';
+        $area = $post['area']??'';
+        $query = $this->modelClass::find();
+        $query->andWhere(['status' => 1]);
+        if($category){
+            $query->andWhere(['category_id' => $category]);
+        }
+        if($city){
+            $query->andWhere(['city_id' => $city]);
+        }
+        if($area){
+            $query->andWhere(['area_id' => $area]);
+        }
+        $query->select([
+            'id', 'name','address','contact'
+        ]);
+        $query->offset($offset);
+        $query->limit($size);
+        $query->asArray();
+        $list = $query->all();
+
+
         foreach ($list as $key => $value){
             $list[$key]['img'] = ProjectImg::find()->where(['project_id' => $value['id']])->select('img_url')->scalar();
         }
@@ -65,4 +82,11 @@ class LanhaiController extends OnAuthController
             return [];
         }
     }
+    public function actionOption(){
+        $list['category'] = Category::getSelectOptions();
+        $list['area'] = Area::getSelectOptions();
+        $list['city'] = City::getSelectOptions();
+        return $list;
+    }
+
 }

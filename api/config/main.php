@@ -93,7 +93,7 @@ return [
                         'POST register' => 'register', // 注册
                         'POST up-pwd' => 'up-pwd', // 重置密码
                         // 测试查询可删除 例如：http://www.rageframe.com/api/v1/default/search
-                        'GET search' => 'search',
+                        'GET option' => 'option',
                         'POST list' => 'list',
                         'POST detail' => 'detail',
                         'GET session-key' => 'session-key', // 小程序获取session key
