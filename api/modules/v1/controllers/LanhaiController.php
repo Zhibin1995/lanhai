@@ -75,7 +75,7 @@ class LanhaiController extends OnAuthController
             $model['img'] = ProjectImg::find()->where(['project_id' => $id])->select('img_url')->column();
             $model['room'] = Room::find()->where(['project_id' => $id,'status' => 1])->select('name,img_url')->asArray()->all();
             $model['people'] = People::find()->where(['project_id' => $id,'status' => 1])->select('name,photo,phone')->asArray()->all();
-            $model['service_facility'] = ServiceFacility::find()->where(['project_id' => $id,'status' => 1])->select('name,img_url')->asArray()->all();
+            $model['service_facility_arr'] = ServiceFacility::find()->where(['project_id' => $id,'status' => 1])->select('name,img_url')->asArray()->all();
             $model['tags'] = Facility::find()->andWhere(['in','id',explode(',',$model['facility_ids'])])->andWhere(['status' => 1])->select('name,icon')->asArray()->all();
             return $model;
         }else{
@@ -83,9 +83,9 @@ class LanhaiController extends OnAuthController
         }
     }
     public function actionOption(){
-        $list['category'] = Category::getSelectOptions();
-        $list['area'] = Area::getSelectOptions();
-        $list['city'] = City::getSelectOptions();
+        $list['category'] = Category::find()->where(['status' =>1])->select('id,name')->column();
+        $list['area'] = Area::find()->where(['status' =>1])->select('id,name')->column();
+        $list['city'] = City::find()->where(['status' =>1])->select('id,name')->column();
         return $list;
     }
 
