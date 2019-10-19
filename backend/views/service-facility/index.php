@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'sort',
             //'status',
-            'created_at',
+            //'created_at',
             //'create_user',
             //'updated_at',
             //'updated_user',
