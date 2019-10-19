@@ -44,6 +44,7 @@ class PeopleController extends BaseController
 
         $dataProvider = $searchModel
             ->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andWhere(['project_id' => Yii::$app->request->get('project_id')]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

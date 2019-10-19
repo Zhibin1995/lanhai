@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::a('可租房源','/backend/room?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
                     },
                     'service_facility' => function($url, $model, $key){
-                        return Html::a('服务设施','/backend/service-facility?ServiceFacility[project_id]='.$model->id,['class' => 'btn btn-primary btn-sm']);
+                        return Html::a('服务设施','/backend/service-facility?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
                     },
                     'people' => function($url, $model, $key){
                         return Html::a('招商人员','/backend/people?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
