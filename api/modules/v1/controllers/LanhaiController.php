@@ -83,9 +83,9 @@ class LanhaiController extends OnAuthController
         }
     }
     public function actionOption(){
-        $list['category'] = Category::find()->where(['status' =>1])->select('id,name')->column();
-        $list['area'] = Area::find()->where(['status' =>1])->select('id,name')->column();
-        $list['city'] = City::find()->where(['status' =>1])->select('id,name')->column();
+        $list['category'] = Category::find()->where(['status' =>1])->select('id,name')->asArray()->all();
+        $list['area'] = Area::find()->where(['status' =>1])->select('id,name')->asArray()->all();
+        $list['city'] = City::find()->where(['status' =>1])->select('id,name')->asArray()->all();
         return $list;
     }
 
