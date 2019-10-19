@@ -59,7 +59,12 @@ trait Curd
         $id = Yii::$app->request->get('id', null);
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            if(isset($model->project_id) && $model->project_id){
+                $url = ['index',"project_id" => $model->project_id];
+            }else{
+                $url = ['index'];
+            }
+            return $this->redirect($url);
         }
 
         return $this->render($this->action->id, [
