@@ -10,6 +10,10 @@ use yii\widgets\ActiveForm;
 $this->title = 'Room';
 $this->params['breadcrumbs'][] = ['label' => 'Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+if(Yii::$app->request->get('project_id')){
+    $model->project_id = Yii::$app->request->get('project_id');
+
+}
 ?>
 
 <div class="row">
@@ -25,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]); ?>
                 <div class="col-sm-12">
-                    <?= $form->field($model, 'project_id')->textInput() ?>
+                    <?= $form->field($model, 'project_id')->hiddenInput()->label(false) ?>
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'img_url')->widget(\common\widgets\webuploader\Files::class, [
                             'type' => 'images',

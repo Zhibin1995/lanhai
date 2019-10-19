@@ -48,6 +48,7 @@ class ServiceFacilityController extends BaseController
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
+            'project_id' => Yii::$app->request->get('project_id')
         ]);
     }
 }

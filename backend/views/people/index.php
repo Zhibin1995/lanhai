@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
                 <div class="box-tools">
-                    <?= Html::create(['edit']) ?>
+                    <?= Html::create(['edit?project_id='.$project_id]) ?>
                 </div>
             </div>
             <div class="box-body table-responsive">
@@ -34,7 +34,18 @@ $this->params['breadcrumbs'][] = $this->title;
             //'project_id',
             'name',
             'phone',
-            'photo',
+            [
+                'attribute' => 'photo',
+                'format' => [
+                    'image',
+                    [
+                        'width'=>'84'
+                    ]
+                ],
+                'value' => function ($model) {
+                    return $model->photo;
+                }
+            ],
             'sort',
             //'status',
             //'created_at',
