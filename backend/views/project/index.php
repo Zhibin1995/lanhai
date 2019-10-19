@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::a('服务设施','/backend/service-facility?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
                     },
                     'people' => function($url, $model, $key){
-                        return Html::linkButton(['/people/index', 'project_id' =>$model->id],'招商人员');
+                        return "<a class=\"btn btn-white btn-sm\" href=\"/backend/people/index?project_id=2\">招商人员</a>";
                     },
                     'edit' => function($url, $model, $key){
                         return Html::edit(['edit', 'id' => $model->id]);
