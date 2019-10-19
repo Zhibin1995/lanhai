@@ -33,9 +33,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             //'desc',
-            'area_id',
-            'category_id',
-            'city_id',
+            [
+                'attribute' => 'area_id',
+                'value' => function ($model) {
+                    return \common\models\app\Area::find()->select('name')->where(['id' => $model->area_id])->scalar();
+                }
+            ],
+            [
+                'attribute' => 'category_id',
+                'value' => function ($model) {
+                    return \common\models\app\Category::find()->select('name')->where(['id' => $model->category_id])->scalar();
+                }
+            ],
+            [
+                'attribute' => 'city_id',
+                'value' => function ($model) {
+                    return \common\models\app\City::find()->select('name')->where(['id' => $model->city_id])->scalar();
+                }
+            ],
             //'project_area',
             //'price_range',
             //'contact',
@@ -56,17 +71,26 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => '操作',
-                'template' => '{edit} {status} {delete}',
+                'template' => '{room} {service_facility} {people} {edit} {status} {delete}',
                 'buttons' => [
-                'edit' => function($url, $model, $key){
+                    'room' => function($url, $model, $key){
+                        return Html::a('可租房源','/backend/room?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
+                    },
+                    'service_facility' => function($url, $model, $key){
+                        return Html::a('服务设施','/backend/service-facility?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
+                    },
+                    'people' => function($url, $model, $key){
+                        return Html::a('招商人员','/backend/people?project_id='.$model->id,['class' => 'btn btn-primary btn-sm']);
+                    },
+                    'edit' => function($url, $model, $key){
                         return Html::edit(['edit', 'id' => $model->id]);
-                },
-               'status' => function($url, $model, $key){
+                    },
+                    'status' => function($url, $model, $key){
                         return Html::status($model['status']);
-                  },
-                'delete' => function($url, $model, $key){
+                    },
+                    'delete' => function($url, $model, $key){
                         return Html::delete(['delete', 'id' => $model->id]);
-                },
+                    },
                 ]
             ]
     ]
