@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
                 <div class="box-tools">
-                    <a class="btn btn-primary btn-xs" href="/backend/people/service-facility?project_id=<?php echo $project_id?>"><i class="icon ion-plus"></i> 创建</a>
+                    <a class="btn btn-primary btn-xs" href="/backend/service-facility?project_id=<?php echo $project_id?>"><i class="icon ion-plus"></i> 创建</a>
                 </div>
             </div>
             <div class="box-body table-responsive">
