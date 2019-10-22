@@ -44,6 +44,9 @@ if(Yii::$app->request->get('project_id')){
                                 ],
                             ]
                     ]); ?>
+                    <div class="form-group field-facility-name required has-error">
+                        <div class="col-sm-12  col-sm-offset-2"><label class="control-label" for="facility-icon">图片尺寸200*250</label></div>
+                    </div>
                     <?= $form->field($model, 'sort')->textInput() ?>
                 </div>
                 <div class="form-group">

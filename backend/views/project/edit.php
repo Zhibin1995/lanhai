@@ -40,6 +40,9 @@ $role = AuthAssignment::find()->select('role_id')->where(['user_id' => Yii::$app
                             ],
                         ]
                     ]); ?>
+                    <div class="form-group field-facility-name required has-error">
+                        <div class="col-sm-12  col-sm-offset-2"><label class="control-label" for="facility-icon">图片尺寸360*193</label></div>
+                    </div>
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'desc')->textarea() ?>
                     <?= $form->field($model, 'area_id')->dropDownList(\common\models\app\Area::getSelectOptions()) ?>

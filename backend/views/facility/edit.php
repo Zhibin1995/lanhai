@@ -37,6 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
                             ]
                     ]); ?>
+
+                    <div class="form-group field-facility-name required has-error">
+                        <div class="col-sm-12  col-sm-offset-2"><label class="control-label" for="facility-icon">图片尺寸1:1</label></div>
+                    </div>
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'sort')->textInput() ?>
                 </div>
