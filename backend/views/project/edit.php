@@ -59,7 +59,7 @@ $role = AuthAssignment::find()->select('role_id')->where(['user_id' => Yii::$app
                     <?= $form->field($model, 'append')->widget(\common\widgets\ueditor\UEditor::class, []) ?>
                     <?= $form->field($model, 'service')->widget(\common\widgets\ueditor\UEditor::class, []) ?>
                     <?= $form->field($model, 'vr_url')->textInput(['maxlength' => true]) ?>
-                    <?php if($role ===1):?>
+                    <?php if($role ==1):?>
                     <?= $form->field($model, 'sort')->textInput() ?>
                     <?php endif;?>
                 </div>
