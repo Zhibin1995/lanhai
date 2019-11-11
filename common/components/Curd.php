@@ -56,7 +56,7 @@ trait Curd
      */
     public function actionEdit()
     {
-        $id = Yii::$app->request->get('id', null);
+        $id = (int)Yii::$app->request->get('id', null);
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(isset($model->project_id) && $model->project_id){
