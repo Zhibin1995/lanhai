@@ -167,7 +167,7 @@ class DebrisHelper
             $pageConnector = '&';
         }
         $fullUrl = Html::encode($fullUrl);
-        $$pageConnector = Html::encode($pageConnector);
+        $pageConnector = Html::encode($pageConnector);
         return [$fullUrl, $pageConnector];
     }
 
