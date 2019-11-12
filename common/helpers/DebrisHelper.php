@@ -149,7 +149,7 @@ class DebrisHelper
         $defautlUrl = Yii::$app->request->getHostInfo() . Yii::$app->request->url;
         $urlArr = explode('?', $defautlUrl);
         $defautlUrl = $urlArr[0];
-        $getQueryParam = urldecode($urlArr[1] ?? '');
+        $getQueryParam = urldecode(\yii\helpers\Html::encode($urlArr[1]) ?? '');
         $getQueryParamArr = explode('&', $getQueryParam);
 
         // 查询字符串是否有page
