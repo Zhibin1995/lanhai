@@ -57,6 +57,7 @@ trait Curd
     public function actionEdit()
     {
         $id = (int)Yii::$app->request->get('id', null);
+        $id = $this->actionFilterWords($id);
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(isset($model->project_id) && $model->project_id){
@@ -71,7 +72,16 @@ trait Curd
             'model' => $model,
         ]);
     }
-
+    public function actionFilterWords($str)
+    {
+        $farr = array(
+            "/<(\\/?)(script|i?frame|style|html|body|title|link|meta|object|\\?|\\%)([^>]*?)>/isU",
+            "/(<[^>]*)on[a-zA-Z]+\s*=([^>]*>)/isU",
+            "/select|insert|update|delete|drop|\'|\/\*|\*|\+|\-|\"|\.\.\/|\.\/|union|into|load_file|outfile|dump/is"
+        );
+        $str = preg_replace($farr,'',$str);
+        return $str;
+    }
     /**
      * 伪删除
      *
