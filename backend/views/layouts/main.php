@@ -25,7 +25,7 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
     <div class="wrapper-content">
         <section class="content-header">
-            <a href="<?= Yii::$app->request->getUrl(); ?>" class="rfHeaderFont">
+            <a href="<?= Html::encode(Yii::$app->request->getUrl()); ?>" class="rfHeaderFont">
                 <i class="glyphicon glyphicon-refresh"></i> 刷新
             </a>
             <?php if (Yii::$app->request->referrer != Yii::$app->request->hostInfo . Yii::$app->request->getBaseUrl() . '/') { ?>
